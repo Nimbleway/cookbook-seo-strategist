@@ -84,7 +84,23 @@ ANTHROPIC_API_KEY=their_anthropic_key_here
 
 ---
 
-## Step 6: Configure the target domain
+## Step 6: Choose a path
+
+Ask the user:
+
+> "The app includes a complete sample SEO analysis for stripe.com — you can explore the full dashboard right now with no API calls. Or I can run a fresh analysis on your own domain, which takes about 5 minutes and uses your Nimble and Anthropic keys.
+>
+> Which would you prefer?
+> A) Explore the sample dashboard now
+> B) Run a full analysis on my domain"
+
+**If they choose A** — skip Steps 7 and 8, go directly to Step 9 (Launch the dashboard). The Stripe dataset is already in the repo at `.nimble/seo_runs/stripe.com/`.
+
+**If they choose B** — continue with Step 7.
+
+---
+
+## Step 7: Configure the target domain
 
 Open `config/analysis_config.json`. Ask the user for:
 
@@ -110,7 +126,7 @@ Update the file with their answers:
 
 ---
 
-## Step 7: Run the pipeline
+## Step 8: Run the pipeline
 
 ```bash
 python3 run_analysis.py
@@ -135,7 +151,7 @@ Results are saved to `.nimble/seo_runs/{domain}/{timestamp}/`. If a phase fails,
 
 ---
 
-## Step 8: Launch the dashboard
+## Step 9: Launch the dashboard
 
 ```bash
 python3 -m streamlit run dashboard/app.py
@@ -145,7 +161,7 @@ The dashboard opens at http://localhost:8501
 
 ---
 
-## Step 9: Orient the user
+## Step 10: Orient the user
 
 Walk the user through the dashboard tabs in this order:
 
